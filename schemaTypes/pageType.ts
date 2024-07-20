@@ -6,6 +6,7 @@ import {defineArrayMember, defineField, defineType} from 'sanity'
 export const pageType = defineType({
   name: 'page',
   type: 'document',
+  liveEdit: true,
   title: 'Page',
   fields: [
     defineField({name: 'title', type: 'string'}),

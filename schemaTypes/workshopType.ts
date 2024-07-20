@@ -7,6 +7,7 @@ export const workshopType = defineType({
   name: 'workshop',
   type: 'document',
   title: 'Workshop',
+  liveEdit: true,
   fields: [
     defineField({
       name: 'title',

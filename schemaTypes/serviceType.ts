@@ -7,6 +7,7 @@ export const serviceType = defineType({
   name: 'service',
   type: 'document',
   title: 'Service',
+  liveEdit: true,
   fields: [
     defineField({
       name: 'title',
