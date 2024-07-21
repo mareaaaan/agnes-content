@@ -7,6 +7,7 @@ import {videosType} from './videosType'
 import {floatingTextType} from './floatingTextType'
 import {feedbackType} from './feedbackType'
 import {serviceType} from './serviceType'
+import { workshopType } from './workshopType'
 
 
 export const schemaTypes = [
@@ -16,5 +17,6 @@ export const schemaTypes = [
   videosType,
   floatingTextType,
   feedbackType,
-  serviceType
+  serviceType,
+  workshopType
 ]

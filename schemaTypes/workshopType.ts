@@ -38,6 +38,33 @@ export const workshopType = defineType({
         ],
     }),
     defineField({
+      title: 'Date',
+      name: 'date',
+      type: 'datetime'
+    }),
+    defineField({
+      title: 'Duration',
+      name: 'duration',
+      type: 'string'
+    }),
+    defineField({
+      title: 'Location',
+      name: 'location',
+      type: 'object',
+      fields: [
+        {
+          title: 'Location Address',
+          name: 'locationAddress',
+          type: 'string',
+        },
+        {
+          title: 'Location URL', 
+          name: 'locationUrl',
+          type: 'url'
+        }
+      ]
+    }),
+    defineField({
       title: 'Description', 
       name: 'description',
       type: 'array', 
@@ -55,7 +82,7 @@ export const workshopType = defineType({
           type: 'image'
         }
       ]
-    }),
+    })
   ],
   icon: DocumentIcon,
   preview: {
