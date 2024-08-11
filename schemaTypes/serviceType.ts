@@ -2,7 +2,8 @@
 
 import {DocumentIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
-
+import { getImageDimensions } from '@sanity/asset-utils'
+ 
 export const serviceType = defineType({
   name: 'service',
   type: 'document',
@@ -48,6 +49,20 @@ export const serviceType = defineType({
           title: 'Alternative text',
         }),
       ],
+      validation: (rule) =>
+        rule.custom((value) => {
+          if (!value) {
+              return true
+          }
+                  
+          const {width, height} = getImageDimensions(value.asset._ref)
+      
+          if (height <= width ) {
+              return 'Image must be in portrait mode'
+          }
+      
+          return true
+      }),
     }),
   ],
   icon: DocumentIcon,

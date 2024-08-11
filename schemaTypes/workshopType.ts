@@ -2,6 +2,7 @@
 
 import {DocumentIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
+import { getImageDimensions } from '@sanity/asset-utils'
 
 export const workshopType = defineType({
   name: 'workshop',
@@ -36,6 +37,20 @@ export const workshopType = defineType({
             title: 'Alternative text',
           }),
         ],
+        validation: (rule) =>
+          rule.custom((value) => {
+            if (!value) {
+                return true
+            }
+                    
+            const {width, height} = getImageDimensions(value.asset._ref)
+        
+            if (height <= width ) {
+                return 'Image must be in portrait mode'
+            }
+        
+            return true
+        }),
     }),
     defineField({
       title: 'Date',
