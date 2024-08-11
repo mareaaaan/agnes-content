@@ -27,7 +27,7 @@ export const serviceType = defineType({
       }
     }),  
     defineField({
-      title: 'Description', 
+      title: 'BlockContent', 
       name: 'description',
       type: 'array', 
       of: [{type: 'block'}]
