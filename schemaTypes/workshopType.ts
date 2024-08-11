@@ -1,8 +1,8 @@
 // ./schemas/workshopType.js
 
 import {DocumentIcon} from '@sanity/icons'
-import {defineField, defineType} from 'sanity'
 import { getImageDimensions } from '@sanity/asset-utils'
+import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export const workshopType = defineType({
   name: 'workshop',
@@ -97,8 +97,26 @@ export const workshopType = defineType({
           type: 'image'
         }
       ]
-    })
-  ],
+    }),
+    defineField({
+      name: 'pageBuilder',
+      type: 'array',
+      title: 'Text',
+      of: [
+        defineArrayMember({
+          name: 'hero',
+          type: 'hero',
+        }),
+        defineArrayMember({
+          name: 'textWithIllustration',
+          type: 'textWithIllustration',
+        }),
+        defineArrayMember({
+          name: 'floatingText',
+          type: 'floatingText'
+        }),
+      ],
+    }),  ],
   icon: DocumentIcon,
   preview: {
     select: {
