@@ -24,7 +24,13 @@ export const serviceType = defineType({
                              .replace(/\s+/g, '-')
                              .slice(0, 200)
       }
-    }),   
+    }),  
+    defineField({
+      title: 'Description', 
+      name: 'description',
+      type: 'array', 
+      of: [{type: 'block'}]
+    }), 
     defineField({
       title: 'Content', 
       name: 'content',
