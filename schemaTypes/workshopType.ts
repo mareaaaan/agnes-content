@@ -80,12 +80,6 @@ export const workshopType = defineType({
       ]
     }),
     defineField({
-      title: 'Block Content', 
-      name: 'description',
-      type: 'array', 
-      of: [{type: 'block'}]
-    }),
-    defineField({
       title: 'Content', 
       name: 'content',
       type: 'array', 

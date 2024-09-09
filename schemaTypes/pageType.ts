@@ -40,12 +40,19 @@ export const pageType = defineType({
           type: 'videos',
         }),
         defineArrayMember({
-          name: 'floatingText',
-          type: 'floatingText'
+          name: 'feedback',
+          type: 'object',
+          fields: [
+            {
+              name: 'Title',
+              type: 'string',
+              title: 'Title',
+            }
+          ] 
         }),
         defineArrayMember({
-          name: 'feedback',
-          type: 'feedback'
+          name: 'floatingText',
+          type: 'floatingText'
         }),
       ],
     }),

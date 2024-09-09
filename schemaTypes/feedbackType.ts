@@ -1,44 +1,47 @@
 // ./schemas/feedbackType.js
 
 import {DocumentTextIcon} from '@sanity/icons'
-import {defineField, defineType, defineArrayMember} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export const feedbackType = defineType({
   name: 'feedback',
-  type: 'object',
+  type: 'document',
   title: 'Feedback',
+  liveEdit: true,
   fields: [
+    defineField(
+      {
+        title: 'Product',
+        name: 'Product',
+        type: 'array',
+        of: [
+          {
+            type: 'reference',
+            weak: true,
+            to: [
+              {type: 'service'},
+              {type: 'workshop'}
+            ],
+            description: 'Which product is the feedback for'
+          }
+        ]
+      }
+    ),
     defineField({
-      name: 'feedbackItems',
-      type: 'array',
-      title: 'Feedback Items',
-      of: [
-        defineArrayMember({
-          title: 'Feedback Item',
-          name: 'feedbackItem',
-          type: 'object',
-          fields: [
-            {
-              title: 'Service',
-              name: 'service',
-              type: 'string',
-            },
-            {
-              title: 'Content', 
-              name: 'content',
-              type: 'array', 
-              of: [{type: 'block'}]
-            }
-          ]
-        })
-      ]
-    }),
-  ],
+      title: 'Text', 
+      name: 'text',
+      type: 'string',
+    })
+    ],
   icon: DocumentTextIcon,  
   preview: {
-    prepare() {
+    select: {
+      text: 'text',
+    },
+    prepare({text}) {
       return {
-        title: 'Feedback'
+        title: text.split(' ').slice(0, 8).join(' '),
+        media: DocumentTextIcon,
       }
     },
   },
