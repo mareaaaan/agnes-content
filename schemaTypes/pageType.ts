@@ -1,6 +1,7 @@
 // ./schemas/pageType.ts
 
 import {DocumentIcon} from '@sanity/icons'
+import {DocumentTextIcon} from '@sanity/icons'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export const pageType = defineType({
@@ -43,12 +44,30 @@ export const pageType = defineType({
           name: 'feedback',
           type: 'object',
           fields: [
-            {
-              name: 'Title',
-              type: 'string',
-              title: 'Title',
-            }
-          ] 
+            defineField(({
+              name: 'feedback',
+              type: 'array',
+              title: 'Feedback',
+              of: [
+                {
+                  type: 'reference',
+                  weak: true,
+                  to: [
+                    {type: 'feedback'}
+                  ],
+                  description: 'Feedback displayed on this page'
+                }
+              ] 
+            }))
+          ],
+          icon: DocumentTextIcon,  
+          preview: {
+            prepare() {
+              return {
+                title: 'Feedback'
+              }
+            },
+          },
         }),
         defineArrayMember({
           name: 'floatingText',
