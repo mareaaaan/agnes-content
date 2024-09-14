@@ -72,9 +72,25 @@ export const pageType = defineType({
         defineArrayMember({
           name: 'floatingText',
           type: 'floatingText'
-        }),
+        })
       ],
     }),
+    defineField({
+      name: 'hierarchy',
+      type: 'array',
+      title: 'Product Hierarchy',
+      of: [
+        defineArrayMember({
+          name: 'Product',
+          type: 'reference',
+          weak: true,
+          to: [
+            {type: 'workshop'},
+            {type: 'service'}
+          ],
+        })
+      ]
+    })
   ],
   icon: DocumentIcon,
 })

@@ -8,8 +8,6 @@ import {floatingTextType} from './floatingTextType'
 import {feedbackType} from './feedbackType'
 import {serviceType} from './serviceType'
 import { workshopType } from './workshopType'
-import { workshopHierarchyType } from './workshopHierarchy'
-import { serviceHierarchyType } from './serviceHierarchy'
 
 
 export const schemaTypes = [
@@ -21,6 +19,4 @@ export const schemaTypes = [
   feedbackType,
   serviceType,
   workshopType,
-  workshopHierarchyType,
-  serviceHierarchyType
 ]

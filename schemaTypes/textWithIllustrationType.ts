@@ -12,7 +12,13 @@ export const textWithIllustrationType = defineType({
     defineField({
       name: 'heading',
       type: 'string',
-    }),
+    }), 
+    defineField({
+      title: 'BlockContent', 
+      name: 'description',
+      type: 'array', 
+      of: [{type: 'block'}]
+    }), 
     defineField({
       title: 'Content', 
       name: 'content',
