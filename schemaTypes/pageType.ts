@@ -1,7 +1,6 @@
 // ./schemas/pageType.ts
 
 import {DocumentIcon} from '@sanity/icons'
-import {DocumentTextIcon} from '@sanity/icons'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export const pageType = defineType({
@@ -24,56 +23,9 @@ export const pageType = defineType({
       }
     }),    
     defineField({
-      name: 'pageBuilder',
-      type: 'array',
-      title: 'Page builder',
-      of: [
-        defineArrayMember({
-          name: 'hero',
-          type: 'hero',
-        }),
-        defineArrayMember({
-          name: 'textWithIllustration',
-          type: 'textWithIllustration',
-        }),
-        defineArrayMember({
-          name: 'videos',
-          type: 'videos',
-        }),
-        defineArrayMember({
-          name: 'feedback',
-          type: 'object',
-          fields: [
-            defineField(({
-              name: 'feedback',
-              type: 'array',
-              title: 'Feedback',
-              of: [
-                {
-                  type: 'reference',
-                  weak: true,
-                  to: [
-                    {type: 'feedback'}
-                  ],
-                  description: 'Feedback displayed on this page'
-                }
-              ] 
-            }))
-          ],
-          icon: DocumentTextIcon,  
-          preview: {
-            prepare() {
-              return {
-                title: 'Feedback'
-              }
-            },
-          },
-        }),
-        defineArrayMember({
-          name: 'floatingText',
-          type: 'floatingText'
-        })
-      ],
+      name: 'content',
+      type: 'content',
+      title: 'Content',
     }),
     defineField({
       name: 'hierarchy',

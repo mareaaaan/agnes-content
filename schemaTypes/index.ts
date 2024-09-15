@@ -1,22 +1,28 @@
 // ./schemas/index.ts
 
-import {heroType} from './heroType'
+import { contentType } from './contentType'
+import { floatingTextType } from './floatingTextType'
 import {pageType} from './pageType'
-import {textWithIllustrationType} from './textWithIllustrationType'
-import {videosType} from './videosType'
-import {floatingTextType} from './floatingTextType'
-import {feedbackType} from './feedbackType'
-import {serviceType} from './serviceType'
+import { textWithIllustrationType } from './textWithIllustrationType'
+import { videoListType } from './videoListType'
+import { feedbackType } from './feedbackType'
 import { workshopType } from './workshopType'
+import { serviceType } from './serviceType'
+import { feedbackListType } from './feedbackListType'
+import { videoType } from './videoType'
+import { textBlockType } from './textBlockType'
 
 
 export const schemaTypes = [
   pageType,
-  heroType,
+  contentType,
   textWithIllustrationType,
-  videosType,
+  videoListType,
+  videoType,
   floatingTextType,
+  feedbackListType,
   feedbackType,
-  serviceType,
   workshopType,
+  serviceType,
+  textBlockType
 ]

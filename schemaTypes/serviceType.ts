@@ -2,7 +2,6 @@
 
 import {DocumentIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
-import { getImageDimensions } from '@sanity/asset-utils'
  
 export const serviceType = defineType({
   name: 'service',
@@ -13,6 +12,7 @@ export const serviceType = defineType({
     defineField({
       name: 'title',
       type: 'string',
+      title: 'Title',
     }),
     defineField({
       name: 'slug',
@@ -25,44 +25,38 @@ export const serviceType = defineType({
                              .replace(/\s+/g, '-')
                              .slice(0, 200)
       }
-    }),  
-    defineField({
-      title: 'BlockContent', 
-      name: 'description',
-      type: 'array', 
-      of: [{type: 'block'}]
-    }), 
-    defineField({
-      title: 'Content', 
-      name: 'content',
-      type: 'array', 
-      of: [{type: 'block'}]
     }),
     defineField({
-      name: 'image',
-      type: 'image',
-      options: {hotspot: true},
+      title: 'Date',
+      name: 'date',
+      type: 'string'
+    }),
+    defineField({
+      title: 'Duration',
+      name: 'duration',
+      type: 'string'
+    }),
+    defineField({
+      title: 'Location',
+      name: 'location',
+      type: 'object',
       fields: [
-        defineField({
-          name: 'alt',
+        {
+          title: 'Location Address',
+          name: 'locationAddress',
           type: 'string',
-          title: 'Alternative text',
-        }),
-      ],
-      validation: (rule) =>
-        rule.custom((value) => {
-          if (!value) {
-              return true
-          }
-                  
-          const {width, height} = getImageDimensions(value.asset._ref)
-      
-          if (height <= width ) {
-              return 'Image must be in portrait mode'
-          }
-      
-          return true
-      }),
+        },
+        {
+          title: 'Location URL', 
+          name: 'locationUrl',
+          type: 'url'
+        }
+      ]
+    }),
+    defineField({
+      title: 'Content',
+      name: 'content',
+      type: 'content'
     }),
   ],
   icon: DocumentIcon,

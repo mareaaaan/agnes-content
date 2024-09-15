@@ -9,8 +9,8 @@ export const floatingTextType = defineType({
   title: 'Floating Text',
   fields: [
     defineField({
-      title: 'Content', 
-      name: 'content',
+      title: 'Text', 
+      name: 'text',
       type: 'array', 
       of: [{type: 'block'}]
     })

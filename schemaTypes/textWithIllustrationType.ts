@@ -7,27 +7,22 @@ import { getImageDimensions } from '@sanity/asset-utils'
 export const textWithIllustrationType = defineType({
   name: 'textWithIllustration',
   type: 'object',
-  title: 'Text with Illustration',
+  title: 'Text with Image',
   fields: [
     defineField({
       name: 'heading',
       type: 'string',
-    }), 
+    }),
     defineField({
-      title: 'BlockContent', 
-      name: 'description',
-      type: 'array', 
-      of: [{type: 'block'}]
-    }), 
-    defineField({
-      title: 'Content', 
-      name: 'content',
+      title: 'Text', 
+      name: 'text',
       type: 'array', 
       of: [{type: 'block'}]
     }),
     defineField({
       name: 'image',
       type: 'image',
+      title: 'Image',
       options: {hotspot: true},
       fields: [
         defineField({
@@ -41,8 +36,13 @@ export const textWithIllustrationType = defineType({
           if (!value) {
               return true
           }
-                  
-          const {width, height} = getImageDimensions(value.asset._ref)
+          const ref = value.asset?._ref
+
+          if (!ref) {
+            return 'Image is missing'
+          }
+
+          const {width, height} = getImageDimensions(ref)
       
           if (height <= width ) {
               return 'Image must be in portrait mode'

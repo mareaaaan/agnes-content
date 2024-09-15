@@ -1,8 +1,7 @@
 // ./schemas/workshopType.js
 
 import {DocumentIcon} from '@sanity/icons'
-import { getImageDimensions } from '@sanity/asset-utils'
-import {defineArrayMember, defineField, defineType} from 'sanity'
+import {defineField, defineType} from 'sanity'
 
 export const workshopType = defineType({
   name: 'workshop',
@@ -13,6 +12,7 @@ export const workshopType = defineType({
     defineField({
       name: 'title',
       type: 'string',
+      title: 'Title',
     }),
     defineField({
       name: 'slug',
@@ -25,37 +25,11 @@ export const workshopType = defineType({
                              .replace(/\s+/g, '-')
                              .slice(0, 200)
       }
-    }),   
-    defineField({
-        name: 'image',
-        type: 'image',
-        options: {hotspot: true},
-        fields: [
-          defineField({
-            name: 'alt',
-            type: 'string',
-            title: 'Alternative text',
-          }),
-        ],
-        validation: (rule) =>
-          rule.custom((value) => {
-            if (!value) {
-                return true
-            }
-                    
-            const {width, height} = getImageDimensions(value.asset._ref)
-        
-            if (height <= width ) {
-                return 'Image must be in portrait mode'
-            }
-        
-            return true
-        }),
     }),
     defineField({
       title: 'Date',
       name: 'date',
-      type: 'datetime'
+      type: 'string'
     }),
     defineField({
       title: 'Duration',
@@ -80,37 +54,11 @@ export const workshopType = defineType({
       ]
     }),
     defineField({
-      title: 'Content', 
+      title: 'Content',
       name: 'content',
-      type: 'array', 
-      of: [
-        {
-          type: 'block'
-        },
-        {
-          type: 'image'
-        }
-      ]
+      type: 'content'
     }),
-    defineField({
-      name: 'pageBuilder',
-      type: 'array',
-      title: 'Text',
-      of: [
-        defineArrayMember({
-          name: 'hero',
-          type: 'hero',
-        }),
-        defineArrayMember({
-          name: 'textWithIllustration',
-          type: 'textWithIllustration',
-        }),
-        defineArrayMember({
-          name: 'floatingText',
-          type: 'floatingText'
-        }),
-      ],
-    }),  ],
+  ],
   icon: DocumentIcon,
   preview: {
     select: {
