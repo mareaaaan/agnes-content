@@ -5,7 +5,9 @@ import {defineField, defineType} from 'sanity'
 
 export const videoType = defineType({
   name: 'video',
-  type: 'object',
+  type: 'document',
+  liveEdit: true,
+  title: 'Video',
   fields: [
     defineField({
       name: 'title',

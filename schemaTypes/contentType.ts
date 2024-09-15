@@ -34,34 +34,10 @@ export const contentType = defineType({
             title: 'Floating Text'
           }),
           defineArrayMember({
-            name: 'feedback',
-            type: 'object',
-            fields: [
-              defineField(({
-                name: 'feedbackItem',
-                type: 'array',
-                title: 'Feedback',
-                of: [
-                  {
-                    type: 'reference',
-                    weak: true,
-                    to: [
-                      {type: 'feedback'}
-                    ],
-                    description: 'Feedback displayed on this page'
-                  }
-                ] 
-              }))
-            ],
-            icon: DocumentTextIcon,  
-            preview: {
-              prepare() {
-                return {
-                  title: 'Feedback'
-                }
-              },
-            },
-          })
+            name: 'feedbackList',
+            type: 'feedbackList',
+            title: 'Feedback List'
+          }),
         ],
         validation: rule => rule.custom(content => {
           if (!content) {

@@ -1,6 +1,6 @@
 // ./schemas/videoListType.js
 
-import {DocumentIcon} from '@sanity/icons'
+import {DocumentVideoIcon} from '@sanity/icons'
 import {defineField, defineType} from 'sanity'
  
 export const videoListType = defineType({
@@ -23,15 +23,11 @@ export const videoListType = defineType({
       ] 
     }),
   ],
-  icon: DocumentIcon,
+  icon: DocumentVideoIcon,
   preview: {
-    select: {
-      title: 'title',
-    },
-    prepare({title}) {
+    prepare() {
       return {
-        title: title,
-        media: DocumentIcon,
+        title: 'Video List'
       }
     },
   },

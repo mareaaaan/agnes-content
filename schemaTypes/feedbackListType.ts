@@ -25,13 +25,9 @@ export const feedbackListType = defineType({
   ],
   icon: DocumentIcon,
   preview: {
-    select: {
-      title: 'title',
-    },
-    prepare({title}) {
+    prepare() {
       return {
-        title: title,
-        media: DocumentIcon,
+        title: 'Feedback List'
       }
     },
   },
