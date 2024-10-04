@@ -9,6 +9,11 @@ export const videoListType = defineType({
   title: 'Video List',
   fields: [
     defineField({
+      title: 'Heading',
+      name: 'heading',
+      type: 'string',
+    }),
+    defineField({
       name: 'Video',
       type: 'array',
       of: [
