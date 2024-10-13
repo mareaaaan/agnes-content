@@ -11,6 +11,7 @@ import { serviceType } from './serviceType'
 import { feedbackListType } from './feedbackListType'
 import { videoType } from './videoType'
 import { textBlockType } from './textBlockType'
+import { qAndAType } from './qAndAType'
 
 
 export const schemaTypes = [
@@ -24,5 +25,6 @@ export const schemaTypes = [
   feedbackType,
   workshopType,
   serviceType,
-  textBlockType
+  textBlockType,
+  qAndAType
 ]

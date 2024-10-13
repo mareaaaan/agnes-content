@@ -38,6 +38,11 @@ export const contentType = defineType({
             type: 'feedbackList',
             title: 'Feedback List'
           }),
+          defineArrayMember({
+            name: 'qAndA',
+            type: 'qAndA',
+            title: 'Questions and Answers'
+          }),
         ],
         validation: rule => rule.custom(content => {
           if (!content) {
