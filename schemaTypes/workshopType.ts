@@ -54,6 +54,23 @@ export const workshopType = defineType({
       ]
     }),
     defineField({
+      title: 'Instagram',
+      name: 'instagram',
+      type: 'object',
+      fields: [
+        {
+          title: 'Title',
+          name: 'title',
+          type: 'string',
+        },
+        {
+          title: 'URL', 
+          name: 'url',
+          type: 'url'
+        }
+      ]
+    }),
+    defineField({
       title: 'Content',
       name: 'content',
       type: 'content'
